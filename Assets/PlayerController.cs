@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public Vector3 jump;
 	public float jumpForce = 4.0f;
 	public bool isGrounded;
+    public float rotateDegree;
 	Rigidbody rb;
 
 	void Start(){
@@ -17,7 +18,6 @@ public class PlayerController : MonoBehaviour {
 		isGrounded = true;
 	}
 		
-
 	void Update()
 	{
 		var xNEW = 0f;
@@ -26,12 +26,12 @@ public class PlayerController : MonoBehaviour {
 		//var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
 		var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 		if (Input.GetKeyDown("a") && Input.GetKey ("w")) {
-			xNEW = -45f;
+			xNEW = -1f * rotateDegree;
 			x = (xOLD - xNEW) * -1;  
 			transform.Rotate (0, x, 0);
 			xOLD = xNEW;
 		} else if (Input.GetKeyDown ("d") && Input.GetKey ("w")) {
-			xNEW = 45f;
+			xNEW = rotateDegree;
 			x = (xOLD - xNEW) * -1;  
 			transform.Rotate (0, x, 0);
 			xOLD = xNEW;
